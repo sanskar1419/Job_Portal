@@ -1,0 +1,35 @@
+.home-background {
+  height: 90vh;
+  width: 100vw;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  /* border: 2px solid blue; */
+  width: 85vw;
+  height: 50vh;
+  color: white;
+}
+
+.content-button-container {
+  width: 55%;
+}
+
+.content-button-container h3 {
+  margin-top: 40x;
+  margin-bottom: 30px;
+}
+.image-container {
+  width: 40%;
+}
+
+.image-container img {
+  border-radius: 10px;
+  height: 45vh;
+}
