@@ -1,16 +1,20 @@
 import express from "express";
 import path from "path";
 import HomeController from "./src/controller/home.controller.js";
+import JobsController from "./src/controller/jobs.controller.js";
 
 const app = new express();
-const homeController = new HomeController();
+
+app.set("view engine", "ejs");
+app.set("views", path.join(path.resolve(), "src", "views"));
 
 app.use(express.static("src/views"));
 app.use(express.static("public"));
 
+const homeController = new HomeController();
+const jobController = new JobsController();
+
 app.get("/", homeController.getHome);
-app.get("/jobs", (req, res) => {
-  res.sendFile(path.join(path.resolve(), "src", "views", "jobs.html"));
-});
+app.get("/jobs", jobController.getJobs);
 
 export default app;

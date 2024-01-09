@@ -98,32 +98,36 @@
     </nav>
 
     <div class="job-container">
-      <h1>Apply to your dream job now</h1>
+      <h1 class="animate__animated animate__heartBeat">
+        Apply to your dream job now
+      </h1>
       <div class="all-jobs">
-        <div class="card bg-warning bg-gradient">
+        <% jobs.forEach(job => { %>
+        <div
+          class="card bg-warning bg-gradient animate__animated animate__backInLeft"
+        >
           <h5 class="card-header">
             Actively Hiring <i class="bi bi-graph-up-arrow"></i>
           </h5>
           <div class="card-body">
-            <img src="images/Coding-Ninjas.jpg" class="img-fluid" alt="..." />
-            <h5 class="card-title">Coding Ninjas</h5>
-            <p class="card-text">Tech SDE</p>
-            <h6 class="locatioon">
-              <i class="bi bi-geo-alt-fill"></i> Gurgao India Remote
+            <img src="<%= job.Clogo %>" class="img-fluid" alt="..." />
+            <h5 class="card-title"><%= job.Cname %></h5>
+            <p class="card-text">Tech <%= job.role %></p>
+            <h6 class="location">
+              <i class="bi bi-geo-alt-fill"></i> <%= job.location %>
             </h6>
             <h6 class="package">
-              <i class="bi bi-currency-rupee"></i> 6-10 Lpa
+              <i class="bi bi-currency-rupee"></i> <%= job.salary %> Lpa
             </h6>
             <div class="skills-container">
-              <button type="button" class="btn btn-dark">React</button>
-              <button type="button" class="btn btn-dark">NodeJs</button>
-              <button type="button" class="btn btn-dark">SQL</button>
-              <button type="button" class="btn btn-dark">CSS</button>
-              <button type="button" class="btn btn-dark">HTML</button>
+              <% job.skills.forEach(skill => { %>
+              <button type="button" class="btn btn-dark"><%= skill %></button>
+              <% }) %>
             </div>
             <a href="#" class="btn bg-black bg-gradient">View Details</a>
           </div>
         </div>
+        <% }) %>
       </div>
     </div>
   </body>
