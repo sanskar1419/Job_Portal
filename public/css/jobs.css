@@ -1,0 +1,65 @@
+.job-container {
+  height: auto;
+  width: 100%;
+  padding: 20px;
+  /* border: 2px solid blue; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+
+.job-container h1 {
+  margin-bottom: 50px;
+}
+
+.all-jobs {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+  height: auto;
+  width: 25vw;
+  margin-bottom: 25px;
+}
+
+.card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card-body img {
+  margin-bottom: 20px;
+  border-radius: 50%;
+  width: 125px;
+  height: 125px;
+}
+
+.skills-container {
+  /* border: 2px solid blue; */
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.skills-container button {
+  margin: 2px;
+}
+
+.card-body a {
+  color: white;
+}
+
+.card-body a :hover {
+  color: white;
+  background-color: beige;
+}
