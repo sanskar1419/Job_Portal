@@ -8,9 +8,15 @@
       <a href="/resister" class="btn btn-warning header-btn"
         >I'm A Job Seeker</a
       >
-      <a href="/resister" class="btn btn-warning header-btn"
-        >I'm A Job Recuiter</a
+      <button
+        type="button"
+        class="btn btn-warning header-btn"
+        data-bs-toggle="modal"
+        data-bs-target="#registerModal"
       >
+        I'm A Job Recuiter
+      </button>
+      <%- include('_register'); %>
     </div>
     <div class="image-container">
       <img

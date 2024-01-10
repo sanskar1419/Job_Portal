@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import HomeController from "./src/controller/home.controller.js";
 import JobsController from "./src/controller/jobs.controller.js";
+import UserController from "./src/controller/user.Controller.js";
 import expressEjsLayouts from "express-ejs-layouts";
 import newJobFormDataValidation from "./src/middleware/jobData.validation.middleware.js";
 import updateJobFormDataValidation from "./src/middleware/update.job.data.validation.js";
@@ -19,6 +20,7 @@ app.use(express.static("public"));
 
 const homeController = new HomeController();
 const jobController = new JobsController();
+const userController = new UserController();
 
 app.get("/", homeController.getHome);
 app.get("/jobs", jobController.getJobs);
