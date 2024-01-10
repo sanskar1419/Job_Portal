@@ -3,6 +3,7 @@ import path from "path";
 import HomeController from "./src/controller/home.controller.js";
 import JobsController from "./src/controller/jobs.controller.js";
 import expressEjsLayouts from "express-ejs-layouts";
+import newJobFormDataValidation from "./src/middleware/jobData.validation.middleware.js";
 
 const app = new express();
 
@@ -19,6 +20,6 @@ const jobController = new JobsController();
 
 app.get("/", homeController.getHome);
 app.get("/jobs", jobController.getJobs);
-app.post("/new", jobController.addNewJob);
+app.post("/new", newJobFormDataValidation, jobController.addNewJob);
 
 export default app;
