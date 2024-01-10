@@ -11,9 +11,9 @@
         <a href="/update-job/<%= job.id %>" class="btn btn-warning"
           >Update <i class="bi bi-pencil-square"></i
         ></a>
-        <a href="/delete-product" class="btn btn-warning"
-          >Delete <i class="bi bi-trash-fill"></i
-        ></a>
+        <button class="btn btn-warning" onclick="deleteJobs('<%= job.id %>')">
+          Delete <i class="bi bi-trash-fill"></i>
+        </button>
       </div>
       <h5 class="card-header">
         Actively Hiring <i class="bi bi-graph-up-arrow"></i>

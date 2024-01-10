@@ -34,7 +34,16 @@ export default class JobsController {
   updateJobData(req, res) {
     JobModel.update(req.body);
     let jobs = JobModel.getAllJobs();
-    console.log(jobs);
+    return res.render("jobs", {
+      jobs: jobs,
+      errorMessage: null,
+    });
+  }
+  deleteJob(req, res) {
+    const id = Number(req.params.id);
+    JobModel.delete(id);
+    let jobs = JobModel.getAllJobs();
+    // console.log(jobs);
     return res.render("jobs", {
       jobs: jobs,
       errorMessage: null,

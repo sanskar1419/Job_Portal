@@ -28,5 +28,6 @@ app.post(
   updateJobFormDataValidation,
   jobController.updateJobData
 );
+app.post("/delete-job/:id", jobController.deleteJob);
 
 export default app;
