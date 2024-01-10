@@ -29,5 +29,6 @@ app.post(
   jobController.updateJobData
 );
 app.post("/delete-job/:id", jobController.deleteJob);
+app.post("/search", jobController.search);
 
 export default app;

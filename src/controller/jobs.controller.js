@@ -49,4 +49,17 @@ export default class JobsController {
       errorMessage: null,
     });
   }
+  search(req, res) {
+    // console.log(req.body);
+    const { name } = req.body;
+    const result = JobModel.searchResult(name);
+    // console.log(result);
+    const length = result.length;
+    console.log(result.length);
+    res.render("searchResult", {
+      jobs: result,
+      length: length,
+      errorMessage: null,
+    });
+  }
 }

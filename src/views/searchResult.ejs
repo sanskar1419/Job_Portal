@@ -1,0 +1,79 @@
+<div class="job-container">
+  <h1 class="animate__animated animate__heartBeat">
+    Here are your Search Results
+  </h1>
+  <div class="all-jobs">
+    <% if( "" == '1') { %>
+    <div
+      class="card bg-warning bg-gradient animate__animated animate__backInLeft"
+    >
+      <div class="edit-delete-link">
+        <a href="/update-job/<%= jobs.id %>" class="btn btn-warning"
+          >Update <i class="bi bi-pencil-square"></i
+        ></a>
+        <button class="btn btn-warning" onclick="deleteJobs('<%= jobs.id %>')">
+          Delete <i class="bi bi-trash-fill"></i>
+        </button>
+      </div>
+      <h5 class="card-header">
+        Actively Hiring <i class="bi bi-graph-up-arrow"></i>
+      </h5>
+
+      <div class="card-body">
+        <img src="<%= jobs.Clogo %>" class="img-fluid" alt="..." />
+        <h5 class="card-title"><%= jobs.Cname %></h5>
+        <p class="card-text">Tech <%= jobs.role %></p>
+        <h6 class="location">
+          <i class="bi bi-geo-alt-fill"></i> <%= jobs.location %> <%=
+          jobs.workModel %>
+        </h6>
+        <h6 class="package">
+          <i class="bi bi-currency-rupee"></i> <%= jobs.salary %> Lpa
+        </h6>
+        <div class="skills-container">
+          <% jobs.skills.forEach(skill => { %>
+          <button type="button" class="btn btn-dark"><%= skill %></button>
+          <% }) %>
+        </div>
+        <a href="#" class="btn bg-black bg-gradient">View Details</a>
+      </div>
+    </div>
+
+    <% } else { %> <% jobs.forEach(job => { %>
+    <div
+      class="card bg-warning bg-gradient animate__animated animate__backInLeft"
+    >
+      <div class="edit-delete-link">
+        <a href="/update-job/<%= job.id %>" class="btn btn-warning"
+          >Update <i class="bi bi-pencil-square"></i
+        ></a>
+        <button class="btn btn-warning" onclick="deleteJobs('<%= job.id %>')">
+          Delete <i class="bi bi-trash-fill"></i>
+        </button>
+      </div>
+      <h5 class="card-header">
+        Actively Hiring <i class="bi bi-graph-up-arrow"></i>
+      </h5>
+
+      <div class="card-body">
+        <img src="<%= job.Clogo %>" class="img-fluid" alt="..." />
+        <h5 class="card-title"><%= job.Cname %></h5>
+        <p class="card-text">Tech <%= job.role %></p>
+        <h6 class="location">
+          <i class="bi bi-geo-alt-fill"></i> <%= job.location %> <%=
+          job.workModel %>
+        </h6>
+        <h6 class="package">
+          <i class="bi bi-currency-rupee"></i> <%= job.salary %> Lpa
+        </h6>
+        <div class="skills-container">
+          <% job.skills.forEach(skill => { %>
+          <button type="button" class="btn btn-dark"><%= skill %></button>
+          <% }) %>
+        </div>
+        <a href="#" class="btn bg-black bg-gradient">View Details</a>
+      </div>
+    </div>
+    <% }) %> <% } %>
+  </div>
+</div>

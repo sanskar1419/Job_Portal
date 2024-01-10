@@ -43,6 +43,17 @@ export default class JobModel {
     const index = jobs.findIndex((p) => p.id === id);
     jobs.splice(index, 1);
   }
+
+  static searchResult(name) {
+    // console.log(name);
+    const data = jobs.filter((job) => {
+      if (job.Cname == name) {
+        return job;
+      }
+    });
+
+    return data;
+  }
 }
 
 var jobs = [
