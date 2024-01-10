@@ -55,11 +55,17 @@ export default class JobsController {
     const result = JobModel.searchResult(name);
     // console.log(result);
     const length = result.length;
-    console.log(result.length);
-    res.render("searchResult", {
-      jobs: result,
-      length: length,
-      errorMessage: null,
-    });
+    if (length == 0) {
+      res.render("404", {
+        errorMessage: null,
+        message: "No Search Result",
+      });
+    } else {
+      res.render("searchResult", {
+        jobs: result,
+        length: length,
+        errorMessage: null,
+      });
+    }
   }
 }
