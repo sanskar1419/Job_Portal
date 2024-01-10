@@ -13,6 +13,21 @@ export default class JobModel {
   static getAllJobs() {
     return jobs;
   }
+
+  static addNewJob(recievedJob) {
+    let newJob = new JobModel(
+      jobs.length + 1,
+      recievedJob.Cname,
+      recievedJob.Clogo,
+      recievedJob.role,
+      recievedJob.location,
+      recievedJob.workModel,
+      recievedJob.salary,
+      recievedJob.skills
+    );
+
+    jobs.push(newJob);
+  }
 }
 
 var jobs = [
