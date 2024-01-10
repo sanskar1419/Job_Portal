@@ -1,0 +1,127 @@
+<div
+  style="
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  "
+  class="bg-warning"
+>
+  <div
+    style="width: 70%; height: auto; padding: 20px"
+    class="bg-warning bg-gradient"
+  >
+    <h1 style="text-align: center">Update The Job Data</h1>
+    <form action="/update-job" method="post" class="bg-warning bg-gradient">
+      <input
+        type="hidden"
+        class="form-control"
+        id="id"
+        name="id"
+        value="<%= job.id %>"
+        required
+      />
+      <div class="mb-3">
+        <label for="name" class="form-label">Company Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="Cname"
+          value="<%= job.Cname %>"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="role" class="form-label">Role</label>
+        <input
+          type="text"
+          class="form-control"
+          id="role"
+          name="role"
+          value="<%= job.role %>"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="salary" class="form-label">Salary Range</label>
+        <input
+          type="text"
+          class="form-control"
+          id="salary"
+          name="salary"
+          value="<%= job.salary %>"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input
+          type="text"
+          class="form-control"
+          id="location"
+          name="location"
+          value="<%= job.location %>"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="workModel" class="form-label">Work Model</label>
+        <select
+          class="form-select form-select-sm"
+          aria-label="Small select example"
+          id="workModel"
+          name="workModel"
+        >
+          <option selected>Select the Work Model</option>
+          <option value="Remote">Remote</option>
+          <option value="WFH">WFH</option>
+          <option value="Hybrid">Hybrid</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="updatedskills" class="form-label">Skills</label>
+        <select name="skills" id="updatedskills" multiple>
+          <option value="HTML">HTML</option>
+          <option value="CSS">CSS</option>
+          <option value="NodeJs">NodeJs</option>
+          <option value="React">React</option>
+          <option value="Angular">Angular</option>
+          <option value="SQL">SQL</option>
+          <option value="MERN">MERN</option>
+          <option value="PHP">PHP</option>
+          <option value="JAVA">JAVA</option>
+          <option value="JavaScript">JavaScript</option>
+          <option value="C">C</option>
+          <option value="C++">C++</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="imageUrl" class="form-label">Image URL</label>
+        <input
+          type="text"
+          class="form-control"
+          id="imageUrl"
+          name="Clogo"
+          accept="images/*"
+          value="<%= job.Clogo %>"
+          required
+        />
+      </div>
+      <div
+        class="submit-form text-dark"
+        style="display: flex; align-items: center; justify-content: center"
+      >
+        <button type="submit" class="btn btn-primary bg-gradient">
+          Update Job
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

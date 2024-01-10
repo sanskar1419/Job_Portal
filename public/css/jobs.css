@@ -63,3 +63,12 @@
   color: white;
   background-color: beige;
 }
+
+.edit-delete-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.edit-delete-link a {
+  width: 50%;
+}

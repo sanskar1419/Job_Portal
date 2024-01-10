@@ -14,6 +14,27 @@ export default class JobsController {
     // console.log(req.body);
     JobModel.addNewJob(req.body);
     let jobs = JobModel.getAllJobs();
+    // console.log(jobs);
+    return res.render("jobs", {
+      jobs: jobs,
+      errorMessage: null,
+    });
+  }
+
+  getUpdateJobView(req, res) {
+    const id = req.params.id;
+    let jobFound = JobModel.getJobById(id);
+    console.log(jobFound);
+    if (jobFound) {
+      res.render("update", { errorMessage: null, job: jobFound });
+    } else {
+      res.send("Product Not Found");
+    }
+  }
+  updateJobData(req, res) {
+    JobModel.update(req.body);
+    let jobs = JobModel.getAllJobs();
+    console.log(jobs);
     return res.render("jobs", {
       jobs: jobs,
       errorMessage: null,

@@ -7,9 +7,18 @@
     <div
       class="card bg-warning bg-gradient animate__animated animate__backInLeft"
     >
+      <div class="edit-delete-link">
+        <a href="/update-job/<%= job.id %>" class="btn btn-warning"
+          >Update <i class="bi bi-pencil-square"></i
+        ></a>
+        <a href="/delete-product" class="btn btn-warning"
+          >Delete <i class="bi bi-trash-fill"></i
+        ></a>
+      </div>
       <h5 class="card-header">
         Actively Hiring <i class="bi bi-graph-up-arrow"></i>
       </h5>
+
       <div class="card-body">
         <img src="<%= job.Clogo %>" class="img-fluid" alt="..." />
         <h5 class="card-title"><%= job.Cname %></h5>

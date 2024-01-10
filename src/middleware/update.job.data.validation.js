@@ -1,6 +1,6 @@
 import JobModel from "../model/job.model.js";
 import { body, validationResult } from "express-validator";
-const newJobFormDataValidation = async (req, res, next) => {
+const updateJobFormDataValidation = async (req, res, next) => {
   const rules = [
     body("Cname").isLength({ min: 1 }).withMessage("Name is Required"),
     body("role").isLength({ min: 1 }).withMessage("Role is Required"),
@@ -17,13 +17,13 @@ const newJobFormDataValidation = async (req, res, next) => {
   console.log(validationError);
   let jobs = JobModel.getAllJobs();
   if (!validationError.isEmpty()) {
-    res.render("jobs", {
+    res.render("update", {
       errorMessage: validationError.array()[0].msg,
-      jobs: jobs,
+      job: req.body,
     });
   } else {
     next();
   }
 };
 
-export default newJobFormDataValidation;
+export default updateJobFormDataValidation;
