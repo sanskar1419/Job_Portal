@@ -6,6 +6,7 @@ import expressEjsLayouts from "express-ejs-layouts";
 
 const app = new express();
 
+app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", path.join(path.resolve(), "src", "views"));
 app.use(expressEjsLayouts);
@@ -18,5 +19,6 @@ const jobController = new JobsController();
 
 app.get("/", homeController.getHome);
 app.get("/jobs", jobController.getJobs);
+app.post("/new", jobController.addNewJob);
 
 export default app;
