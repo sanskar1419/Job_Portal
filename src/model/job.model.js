@@ -15,16 +15,16 @@ export default class JobModel {
     return jobs;
   }
 
-  static addNewJob(recievedJob) {
+  static addNewJob(Cname, role, location, workModel, salary, skills, Clogo) {
     let newJob = new JobModel(
       uniqid(),
-      recievedJob.Cname,
-      recievedJob.Clogo,
-      recievedJob.role,
-      recievedJob.location,
-      recievedJob.workModel,
-      recievedJob.salary,
-      recievedJob.skills
+      Cname,
+      Clogo,
+      role,
+      location,
+      workModel,
+      salary,
+      skills
     );
 
     jobs.push(newJob);

@@ -9,7 +9,12 @@ const newJobFormDataValidation = async (req, res, next) => {
       .isLength({ min: 1 })
       .withMessage("Work Model is Required"),
     body("skills").isArray().withMessage("Atleast two skills to be selected"),
-    body("Clogo").isURL().withMessage("Enter a valid URL"),
+    body("Clogo").custom((value, { req }) => {
+      if (!req.file) {
+        throw new Error("Image URL is Missing or not valid");
+      }
+      return true;
+    }),
   ];
 
   await Promise.all(rules.map((rule) => rule.run(req)));

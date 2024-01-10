@@ -5,6 +5,7 @@ import JobsController from "./src/controller/jobs.controller.js";
 import expressEjsLayouts from "express-ejs-layouts";
 import newJobFormDataValidation from "./src/middleware/jobData.validation.middleware.js";
 import updateJobFormDataValidation from "./src/middleware/update.job.data.validation.js";
+import { logoUploadFile } from "./src/middleware/company-logo-upload.middleware.js";
 
 const app = new express();
 
@@ -21,7 +22,12 @@ const jobController = new JobsController();
 
 app.get("/", homeController.getHome);
 app.get("/jobs", jobController.getJobs);
-app.post("/new", newJobFormDataValidation, jobController.addNewJob);
+app.post(
+  "/new",
+  logoUploadFile.single("Clogo"),
+  newJobFormDataValidation,
+  jobController.addNewJob
+);
 app.get("/update-job/:id", jobController.getUpdateJobView);
 app.post(
   "/update-job",
