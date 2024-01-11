@@ -52,10 +52,12 @@
       <h6 class="package">
         <i class="bi bi-person-arms-up"></i> <%= job.opening %> Opening
       </h6>
-      <h6 class="package">
-        <i class="bi bi-app-indicator"></i> <%= job.applicant.length %>
-        Applicants
-      </h6>
+      <a
+        href="/applicant/<%= job.id %>"
+        style="text-decoration: none; color: black"
+        ><i class="bi bi-app-indicator"></i> <%= job.applicant.length %>
+        Applicants</a
+      >
     </div>
   </div>
 

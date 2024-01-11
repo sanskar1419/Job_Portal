@@ -63,6 +63,7 @@ app.post("/login", userController.userLogin);
 app.get("/logout", auth, userController.logout);
 app.get("/view-detail/:id", auth, jobController.getJobDetailsPage);
 app.post("/apply-now", resumeFile.single("resume"), jobController.applyNewJob);
+app.get("/applicant/:id", jobController.showApplicants);
 // app.get("/jobs/seeker", jobController.getJobs);
 
 export default app;

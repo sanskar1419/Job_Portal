@@ -121,6 +121,18 @@ export default class JobsController {
     }
   }
 
+  showApplicants(req, res) {
+    const job = JobModel.getJobById(req.params.id);
+    // console.log(job);
+    const applicants = job.applicant;
+    res.render("applicants", {
+      errorMessage: null,
+      applicants: applicants,
+      userEmail: req.session.userEmail,
+      successMessage: null,
+    });
+  }
+
   getJobDetailsPage(req, res) {
     // console.log(req.params.id);
     let id = req.params.id;

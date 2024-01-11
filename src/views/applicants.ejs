@@ -1,0 +1,31 @@
+<div
+  style="width: 100%; height: 90vh; padding: 100px"
+  class="bg-warning bg-gradient"
+>
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Resume</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% applicants.forEach(applicant => { %>
+      <tr>
+        <td><%= applicant.name %></td>
+        <td><%= applicant.email %></td>
+        <td scope="col">
+          <a href="<%= applicant.resumeFile %>" target="_blank"
+            ><img
+              src="https://banner2.cleanpng.com/20180812/klg/kisspng-vector-graphics-clip-art-download-royalty-free-com--5b6fe048a74235.8130205015340585686851.jpg"
+              alt=""
+              width="50px"
+              height="50px"
+          /></a>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
