@@ -8,6 +8,7 @@ export default class JobsController {
     res.render("jobs", {
       jobs: jobs,
       errorMessage: null,
+      successMessage: null,
     });
   }
   addNewJob(req, res) {
@@ -20,17 +21,26 @@ export default class JobsController {
     return res.render("jobs", {
       jobs: jobs,
       errorMessage: null,
+      successMessage: "New Job added Succesfully",
     });
   }
 
   getUpdateJobView(req, res) {
     const id = req.params.id;
     let jobFound = JobModel.getJobById(id);
-    console.log(jobFound);
+    // console.log(jobFound);
     if (jobFound) {
-      res.render("update", { errorMessage: null, job: jobFound });
+      res.render("update", {
+        errorMessage: null,
+        job: jobFound,
+        successMessage: null,
+      });
     } else {
-      res.send("Product Not Found");
+      res.render("404", {
+        errorMessage: null,
+        message: "No Such job is there",
+        successMessage: null,
+      });
     }
   }
   updateJobData(req, res) {
@@ -39,6 +49,7 @@ export default class JobsController {
     return res.render("jobs", {
       jobs: jobs,
       errorMessage: null,
+      successMessage: "Job Data Updated Successfully",
     });
   }
   deleteJob(req, res) {
@@ -49,6 +60,7 @@ export default class JobsController {
     return res.render("jobs", {
       jobs: jobs,
       errorMessage: null,
+      successMessage: "Job Deleted Succesfully",
     });
   }
   search(req, res) {
@@ -61,12 +73,14 @@ export default class JobsController {
       res.render("404", {
         errorMessage: null,
         message: "No Search Result",
+        successMessage: null,
       });
     } else {
       res.render("searchResult", {
         jobs: result,
         length: length,
         errorMessage: null,
+        successMessage: null,
       });
     }
   }

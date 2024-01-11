@@ -38,5 +38,6 @@ app.post(
 );
 app.post("/delete-job/:id", jobController.deleteJob);
 app.post("/search", jobController.search);
+app.post("/register", userController.createNewUser);
 
 export default app;

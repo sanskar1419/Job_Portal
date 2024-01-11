@@ -20,6 +20,7 @@ const updateJobFormDataValidation = async (req, res, next) => {
     res.render("update", {
       errorMessage: validationError.array()[0].msg,
       job: req.body,
+      successMessage: null,
     });
   } else {
     next();

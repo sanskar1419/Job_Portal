@@ -25,6 +25,7 @@ const newJobFormDataValidation = async (req, res, next) => {
     res.render("jobs", {
       errorMessage: validationError.array()[0].msg,
       jobs: jobs,
+      successMessage: null,
     });
   } else {
     next();
