@@ -37,7 +37,7 @@ export default class JobsController {
       opening
     );
     let jobs = JobModel.getAllJobs();
-    // console.log(jobs);
+    console.log(jobs);
     return res.render("jobs", {
       jobs: jobs,
       errorMessage: null,
@@ -46,6 +46,14 @@ export default class JobsController {
     });
   }
 
+  applyNewJob(req, res) {
+    console.log(req.body);
+    const { name, email, id } = req.body;
+    // console.log(req.file);
+    const resumeFile = "resumes/" + req.file.filename;
+    JobModel.addNewApplicant(id, name, email, resumeFile);
+    return res.redirect("back");
+  }
   getUpdateJobView(req, res) {
     const id = req.params.id;
     let jobFound = JobModel.getJobById(id);
@@ -69,6 +77,7 @@ export default class JobsController {
   updateJobData(req, res) {
     JobModel.update(req.body);
     let jobs = JobModel.getAllJobs();
+    // console.log(jobs);
     return res.render("jobs", {
       jobs: jobs,
       errorMessage: null,

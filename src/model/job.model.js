@@ -11,7 +11,8 @@ export default class JobModel {
     skills,
     opening,
     applicant,
-    lastDate
+    lastDate,
+    postedDate
   ) {
     this.id = id;
     this.Cname = Cname;
@@ -24,6 +25,7 @@ export default class JobModel {
     this.opening = opening;
     this.applicant = applicant;
     this.lastDate = lastDate;
+    this.postedDate = postedDate;
   }
 
   static getAllJobs() {
@@ -41,6 +43,8 @@ export default class JobModel {
     lastDate,
     opening
   ) {
+    const date = new Date();
+    let curruntDate = date.toJSON().slice(0, 10);
     let newJob = new JobModel(
       uniqid(),
       Cname,
@@ -52,7 +56,8 @@ export default class JobModel {
       skills,
       opening,
       [],
-      lastDate
+      lastDate,
+      curruntDate
     );
 
     jobs.push(newJob);
@@ -68,6 +73,9 @@ export default class JobModel {
     const applicant = jobs[index].applicant;
     jobs[index] = jobRecieved;
     jobs[index].applicant = applicant;
+    const date = new Date();
+    let curruntDate = date.toJSON().slice(0, 10);
+    jobs[index].postedDate = curruntDate;
   }
   static delete(id) {
     const index = jobs.findIndex((p) => p.id === id);
@@ -84,6 +92,19 @@ export default class JobModel {
 
     return data;
   }
+
+  static addNewApplicant(id, name, email, resumeFile) {
+    // console.log(id);
+    const job = this.getJobById(id);
+    const newApplicant = {
+      name,
+      email,
+      resumeFile,
+    };
+    job.applicant.push(newApplicant);
+    // console.log(job);
+    // console.log(newApplicant);
+  }
 }
 
 var jobs = [
@@ -98,7 +119,8 @@ var jobs = [
     ["HTML", "NodeJs", "React", "CSS", "SQL"],
     "2",
     [],
-    "2, May 2024"
+    "2, May 2024",
+    "11-01-24"
   ),
   new JobModel(
     "2",
@@ -111,7 +133,8 @@ var jobs = [
     ["SDE", "SQL", "React", "JavaScript", "JQuery", "Java"],
     "2",
     [],
-    "2, May 2024"
+    "2, May 2024",
+    "11-01-24"
   ),
   new JobModel(
     "3",
@@ -124,7 +147,8 @@ var jobs = [
     ["NodeJs", "React", "Angular", "MERN", "SQL"],
     "2",
     [],
-    "2, May 2024"
+    "2, May 2024",
+    "11-01-24"
   ),
   new JobModel(
     "4",
@@ -137,6 +161,7 @@ var jobs = [
     ["HTML", "NodeJs", "React", "CSS", "SQL", "JavaScript"],
     "2",
     [],
-    "2, May 2024"
+    "2, May 2024",
+    "11-01-24"
   ),
 ];

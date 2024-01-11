@@ -35,6 +35,9 @@
       </div>
     </div>
     <div style="width: 30%; padding: 50px; border-left: 2px solid black">
+      <button type="button" class="btn btn-success" style="margin-bottom: 10px">
+        Posted On : <%= job.postedDate %>
+      </button>
       <h6 class="location">
         <i class="bi bi-geo-alt-fill"></i> <%= job.location %> <%= job.workModel
         %>
@@ -84,7 +87,15 @@
     </div>
     <div style="width: 45%; padding: 50px" class="bg-warning">
       <h3>Apply For The Job</h3>
-      <form action="/apply-now" method="post">
+      <form action="/apply-now" enctype="multipart/form-data" method="post">
+        <input
+          type="hidden"
+          class="form-control"
+          id="id"
+          name="id"
+          value="<%= job.id %>"
+          required
+        />
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
           <input
