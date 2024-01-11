@@ -32,6 +32,7 @@ app.use(expressEjsLayouts);
 
 app.use(express.static("src/views"));
 app.use(express.static("public"));
+app.use(express.static("public/css"));
 
 const homeController = new HomeController();
 const jobController = new JobsController();
@@ -58,6 +59,7 @@ app.post("/search", auth, jobController.search);
 app.post("/register", userDataValidation, userController.createNewUser);
 app.post("/login", userController.userLogin);
 app.get("/logout", auth, userController.logout);
+app.get("/view-detail/:id", auth, jobController.getJobDetailsPage);
 // app.get("/jobs/seeker", jobController.getJobs);
 
 export default app;

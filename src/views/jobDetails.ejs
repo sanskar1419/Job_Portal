@@ -1,0 +1,124 @@
+<div
+  style="
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+  "
+>
+  <div
+    style="
+      width: 100%;
+      height: auto;
+      padding: 20px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    "
+    class="bg-warning bg-gradient"
+  >
+    <div style="width: 65%; display: flex; align-items: center; padding: 50px">
+      <div style="margin-right: 50px">
+        <img src="<%= job.Clogo %>" alt="" width="200px" height="200px" />
+      </div>
+
+      <div>
+        <h4><%= job.role %></h4>
+        <h5 class="location"><%= job.Cname %></h5>
+        <div class="skills-container">
+          <% job.skills.forEach(skill => { %>
+          <button type="button" class="btn btn-dark"><%= skill %></button>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+    <div style="width: 30%; padding: 50px; border-left: 2px solid black">
+      <h6 class="location">
+        <i class="bi bi-geo-alt-fill"></i> <%= job.location %> <%= job.workModel
+        %>
+      </h6>
+      <h6 class="package">
+        <i class="bi bi-currency-rupee"></i> <%= job.salary %> Lpa
+      </h6>
+      <h6 class="package">
+        <i class="bi bi-hourglass-split"></i> <%= job.salary %> Lpa
+      </h6>
+
+      <h6 class="package">
+        <i class="bi bi-person-arms-up"></i> <%= job.salary %> Lpa
+      </h6>
+      <h6 class="package">
+        <i class="bi bi-app-indicator"></i> <%= job.salary %> Lpa
+      </h6>
+    </div>
+  </div>
+
+  <div
+    style="
+      padding: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+    "
+  >
+    <div style="width: 50%; padding: 50px" class="bg-warning">
+      <h5>About the Company</h5>
+      <p>
+        HealthAsyst® is a leading provider of IT services to some of the largest
+        healthcare IT vendors in the United States. We bring the value of
+        cutting-edge technology through our deep expertise in product
+        engineering, custom software development, testing, large-scale
+        healthcare IT implementation and integrations, on-going maintenance and
+        support, BI & Analytics, and remote monitoring platforms. As a true
+        partner, we help our customers navigate a complex regulatory landscape,
+        deal with cost pressures, and offer high-quality services. As a
+        healthcare transformation agent, we enable innovation in technology and
+        accelerate problem-solving while delivering unmatched cost benefits to
+        healthcare technology companies. Since 1999, HealthAsyst IT Services has
+        been delivering technology solutions through a systematic, consultative
+        approach to prestigious healthcare tech companies.
+      </p>
+    </div>
+    <div style="width: 45%; padding: 50px" class="bg-warning">
+      <h3>Apply For The Job</h3>
+      <form action="/apply-now" method="post">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="resume" class="form-label">Resume</label>
+          <input
+            type="file"
+            class="form-control"
+            id="resume"
+            name="resume"
+            accept="pdf/*"
+            required
+          />
+        </div>
+        <div class="btn-center">
+          <button type="submit" class="btn btn-primary">Apply Now</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

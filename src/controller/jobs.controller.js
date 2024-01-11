@@ -92,4 +92,25 @@ export default class JobsController {
       });
     }
   }
+
+  getJobDetailsPage(req, res) {
+    // console.log(req.params.id);
+    let id = req.params.id;
+    let jobFound = JobModel.getJobById(id);
+    if (jobFound) {
+      res.render("jobDetails", {
+        errorMessage: null,
+        job: jobFound,
+        userEmail: req.session.userEmail,
+        successMessage: null,
+      });
+    } else {
+      res.render("404", {
+        errorMessage: null,
+        message: "No Such job Exist",
+        successMessage: null,
+        userEmail: req.session.userEmail,
+      });
+    }
+  }
 }
