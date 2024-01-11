@@ -21,6 +21,7 @@ const updateJobFormDataValidation = async (req, res, next) => {
       errorMessage: validationError.array()[0].msg,
       job: req.body,
       successMessage: null,
+      userEmail: req.session.userEmail,
     });
   } else {
     next();

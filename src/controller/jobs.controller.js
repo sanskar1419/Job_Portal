@@ -9,6 +9,7 @@ export default class JobsController {
       jobs: jobs,
       errorMessage: null,
       successMessage: null,
+      userEmail: req.session.userEmail,
     });
   }
   addNewJob(req, res) {
@@ -22,6 +23,7 @@ export default class JobsController {
       jobs: jobs,
       errorMessage: null,
       successMessage: "New Job added Succesfully",
+      userEmail: req.session.userEmail,
     });
   }
 
@@ -34,12 +36,14 @@ export default class JobsController {
         errorMessage: null,
         job: jobFound,
         successMessage: null,
+        userEmail: req.session.userEmail,
       });
     } else {
       res.render("404", {
         errorMessage: null,
         message: "No Such job is there",
         successMessage: null,
+        userEmail: req.session.userEmail,
       });
     }
   }
@@ -50,6 +54,7 @@ export default class JobsController {
       jobs: jobs,
       errorMessage: null,
       successMessage: "Job Data Updated Successfully",
+      userEmail: req.session.userEmail,
     });
   }
   deleteJob(req, res) {
@@ -61,6 +66,7 @@ export default class JobsController {
       jobs: jobs,
       errorMessage: null,
       successMessage: "Job Deleted Succesfully",
+      userEmail: req.session.userEmail,
     });
   }
   search(req, res) {
@@ -74,6 +80,7 @@ export default class JobsController {
         errorMessage: null,
         message: "No Search Result",
         successMessage: null,
+        userEmail: req.session.userEmail,
       });
     } else {
       res.render("searchResult", {
@@ -81,6 +88,7 @@ export default class JobsController {
         length: length,
         errorMessage: null,
         successMessage: null,
+        userEmail: req.session.userEmail,
       });
     }
   }

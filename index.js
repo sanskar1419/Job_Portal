@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import session from "express-session";
 import HomeController from "./src/controller/home.controller.js";
 import JobsController from "./src/controller/jobs.controller.js";
 import UserController from "./src/controller/user.Controller.js";
@@ -8,8 +9,18 @@ import newJobFormDataValidation from "./src/middleware/jobData.validation.middle
 import updateJobFormDataValidation from "./src/middleware/update.job.data.validation.js";
 import { logoUploadFile } from "./src/middleware/company-logo-upload.middleware.js";
 import userDataValidation from "./src/middleware/userData.validation.middleware.js";
+import { auth } from "./src/middleware/authMiddleware.js";
 
 const app = new express();
+
+app.use(
+  session({
+    secret: "JobPortal",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
+  })
+);
 
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
@@ -24,22 +35,25 @@ const jobController = new JobsController();
 const userController = new UserController();
 
 app.get("/", homeController.getHome);
-app.get("/jobs", jobController.getJobs);
+app.get("/jobs", auth, jobController.getJobs);
 app.post(
   "/new",
+  auth,
   logoUploadFile.single("Clogo"),
   newJobFormDataValidation,
   jobController.addNewJob
 );
-app.get("/update-job/:id", jobController.getUpdateJobView);
+app.get("/update-job/:id", auth, jobController.getUpdateJobView);
 app.post(
   "/update-job",
+  auth,
   updateJobFormDataValidation,
   jobController.updateJobData
 );
-app.post("/delete-job/:id", jobController.deleteJob);
-app.post("/search", jobController.search);
+app.post("/delete-job/:id", auth, jobController.deleteJob);
+app.post("/search", auth, jobController.search);
 app.post("/register", userDataValidation, userController.createNewUser);
 app.post("/login", userController.userLogin);
+app.get("/logout", auth, userController.logout);
 
 export default app;

@@ -8,6 +8,7 @@ export default class UserController {
     res.render("home", {
       errorMessage: null,
       successMessage: "Hurray, You have registered Successfully, Kindly Login",
+      userEmail: req.session.userEmail,
     });
   }
 
@@ -18,14 +19,32 @@ export default class UserController {
       return res.render("home", {
         errorMessage: "Invalid Credential",
         successMessage: null,
+        userEmail: req.session.userEmail,
       });
     } else {
+      req.session.userEmail = email;
       let jobs = JobModel.getAllJobs();
       return res.render("jobs", {
         jobs: jobs,
         errorMessage: null,
         successMessage: "Succesfully Login",
+        userEmail: req.session.userEmail,
       });
     }
+  }
+
+  logout(req, res) {
+    req.session.destroy((err) => {
+      if (err) {
+        console.log(err);
+        res.send("Error in Logging Out");
+      } else {
+        res.render("home", {
+          errorMessage: null,
+          successMessage: "Successfully Logout",
+          userEmail: req.session.userEmail,
+        });
+      }
+    });
   }
 }

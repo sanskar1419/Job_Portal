@@ -30,6 +30,7 @@ const userDataValidation = async (req, res, next) => {
     res.render("home", {
       errorMessage: validationError.array()[0].msg,
       successMessage: null,
+      userEmail: req.session.userEmail,
     });
   } else {
     next();
