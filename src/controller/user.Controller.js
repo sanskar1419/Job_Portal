@@ -42,9 +42,9 @@ export default class UserController {
         res.render("home", {
           errorMessage: null,
           successMessage: "Successfully Logout",
-          userEmail: req.session.userEmail,
         });
       }
     });
+    res.clearCookie("lastVisit");
   }
 }

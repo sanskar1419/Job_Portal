@@ -10,9 +10,12 @@ import updateJobFormDataValidation from "./src/middleware/update.job.data.valida
 import { logoUploadFile } from "./src/middleware/company-logo-upload.middleware.js";
 import userDataValidation from "./src/middleware/userData.validation.middleware.js";
 import { auth } from "./src/middleware/authMiddleware.js";
+import cookieParser from "cookie-parser";
+import { setLastVisit } from "./src/middleware/lastVisit.Middleware.js";
 
 const app = new express();
 
+app.use(cookieParser());
 app.use(
   session({
     secret: "JobPortal",
@@ -35,7 +38,7 @@ const jobController = new JobsController();
 const userController = new UserController();
 
 app.get("/", homeController.getHome);
-app.get("/jobs", auth, jobController.getJobs);
+app.get("/jobs", setLastVisit, auth, jobController.getJobs);
 app.post(
   "/new",
   auth,
@@ -55,5 +58,6 @@ app.post("/search", auth, jobController.search);
 app.post("/register", userDataValidation, userController.createNewUser);
 app.post("/login", userController.userLogin);
 app.get("/logout", auth, userController.logout);
+// app.get("/jobs/seeker", jobController.getJobs);
 
 export default app;
