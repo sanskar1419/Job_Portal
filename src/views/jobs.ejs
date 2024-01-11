@@ -13,6 +13,7 @@
     <div
       class="card bg-warning bg-gradient animate__animated animate__backInLeft"
     >
+      <% if(locals.userEmail && locals.userEmail != "test@gmail.com") { %>
       <div class="edit-delete-link">
         <a href="/update-job/<%= job.id %>" class="btn btn-warning"
           >Update <i class="bi bi-pencil-square"></i
@@ -21,6 +22,8 @@
           Delete <i class="bi bi-trash-fill"></i>
         </button>
       </div>
+      <%}%>
+
       <h5 class="card-header">
         Actively Hiring <i class="bi bi-graph-up-arrow"></i>
       </h5>

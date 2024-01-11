@@ -52,12 +52,14 @@
       <h6 class="package">
         <i class="bi bi-person-arms-up"></i> <%= job.opening %> Opening
       </h6>
+      <% if(locals.userEmail && locals.userEmail != "test@gmail.com") { %>
       <a
         href="/applicant/<%= job.id %>"
         style="text-decoration: none; color: black"
         ><i class="bi bi-app-indicator"></i> <%= job.applicant.length %>
         Applicants</a
       >
+      <%}%>
     </div>
   </div>
 

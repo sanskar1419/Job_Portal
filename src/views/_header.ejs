@@ -25,14 +25,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <% if(!locals.userEmail) { %>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
+        <%}%>
+
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/jobs">Jobs</a>
         </li>
 
-        <% if(locals.userEmail) { %>
+        <% if(locals.userEmail && locals.userEmail != "test@gmail.com") { %>
         <li class="nav-item dropdown">
           <button
             class="btn btn-black dropdown-toggle"
@@ -52,16 +55,12 @@
                 >New Product</a
               >
             </li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </li>
           </ul>
         </li>
         <% } %>
       </ul>
 
-      <% if(locals.userEmail) { %>
+      <% if(locals.userEmail && locals.userEmail != "test@gmail.com") { %>
       <form action="/search" method="post" class="d-flex">
         <input
           class="form-control me-2"
@@ -80,7 +79,26 @@
         style="margin-left: 10px"
         >Logout</a
       >
-      <% } else {%>
+      <% }%> <% if(locals.userEmail == "test@gmail.com") { %>
+      <form action="/search" method="post" class="d-flex">
+        <input
+          class="form-control me-2"
+          type="text"
+          name="name"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success btn-warning" type="submit">
+          Search
+        </button>
+      </form>
+      <a
+        href="/logout"
+        class="btn btn-warning header-btn"
+        style="margin-left: 10px"
+        >End Session</a
+      >
+      <%}%> <% if(!locals.userEmail) {%>
       <a
         href="#"
         class="btn btn-warning header-btn"

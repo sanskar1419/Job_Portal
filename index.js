@@ -4,6 +4,7 @@ import session from "express-session";
 import HomeController from "./src/controller/home.controller.js";
 import JobsController from "./src/controller/jobs.controller.js";
 import UserController from "./src/controller/user.Controller.js";
+import SeekerController from "./src/controller/seeker.controller.js";
 import expressEjsLayouts from "express-ejs-layouts";
 import newJobFormDataValidation from "./src/middleware/jobData.validation.middleware.js";
 import updateJobFormDataValidation from "./src/middleware/update.job.data.validation.js";
@@ -39,6 +40,7 @@ app.use(express.static("public/images"));
 const homeController = new HomeController();
 const jobController = new JobsController();
 const userController = new UserController();
+const seekerController = new SeekerController();
 
 app.get("/", homeController.getHome);
 app.get("/jobs", setLastVisit, auth, jobController.getJobs);
@@ -62,8 +64,13 @@ app.post("/register", userDataValidation, userController.createNewUser);
 app.post("/login", userController.userLogin);
 app.get("/logout", auth, userController.logout);
 app.get("/view-detail/:id", auth, jobController.getJobDetailsPage);
-app.post("/apply-now", resumeFile.single("resume"), jobController.applyNewJob);
-app.get("/applicant/:id", jobController.showApplicants);
-// app.get("/jobs/seeker", jobController.getJobs);
+app.post(
+  "/apply-now",
+  auth,
+  resumeFile.single("resume"),
+  jobController.applyNewJob
+);
+app.get("/applicant/:id", auth, jobController.showApplicants);
+app.get("/jobsseeker", auth, seekerController.renderAsJobSeeker);
 
 export default app;
