@@ -1,11 +1,11 @@
 import uniqid from "uniqid";
 
 export default class UserModel {
-  constructor(id, name, email, pasword) {
+  constructor(id, name, email, password) {
     this.id = id;
     this.name = name;
     this.email = email;
-    this.pasword = pasword;
+    this.password = password;
   }
 
   static addUser(name, email, password) {
@@ -16,6 +16,12 @@ export default class UserModel {
 
   static getByEmail(email) {
     return users.find((p) => p.email == email);
+  }
+  static isValidUser(email, password) {
+    const result = users.find(
+      (u) => u.email == email && u.password == password
+    );
+    return result;
   }
 }
 

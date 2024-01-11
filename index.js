@@ -40,5 +40,6 @@ app.post(
 app.post("/delete-job/:id", jobController.deleteJob);
 app.post("/search", jobController.search);
 app.post("/register", userDataValidation, userController.createNewUser);
+app.post("/login", userController.userLogin);
 
 export default app;
