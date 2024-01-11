@@ -7,6 +7,7 @@ import expressEjsLayouts from "express-ejs-layouts";
 import newJobFormDataValidation from "./src/middleware/jobData.validation.middleware.js";
 import updateJobFormDataValidation from "./src/middleware/update.job.data.validation.js";
 import { logoUploadFile } from "./src/middleware/company-logo-upload.middleware.js";
+import userDataValidation from "./src/middleware/userData.validation.middleware.js";
 
 const app = new express();
 
@@ -38,6 +39,6 @@ app.post(
 );
 app.post("/delete-job/:id", jobController.deleteJob);
 app.post("/search", jobController.search);
-app.post("/register", userController.createNewUser);
+app.post("/register", userDataValidation, userController.createNewUser);
 
 export default app;

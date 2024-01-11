@@ -10,9 +10,15 @@ export default class UserModel {
 
   static addUser(name, email, password) {
     const newUser = new UserModel(uniqid(), name, email, password);
-    console.log(newUser);
+    // console.log(newUser);
     users.push(newUser);
+  }
+
+  static getByEmail(email) {
+    return users.find((p) => p.email == email);
   }
 }
 
-var users = [];
+var users = [
+  new UserModel("1", "Sanskar", "sanskar1419@gmail.com", "12345678"),
+];
