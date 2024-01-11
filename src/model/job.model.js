@@ -1,6 +1,18 @@
 import uniqid from "uniqid";
 export default class JobModel {
-  constructor(id, Cname, Clogo, role, location, workModel, salary, skills) {
+  constructor(
+    id,
+    Cname,
+    Clogo,
+    role,
+    location,
+    workModel,
+    salary,
+    skills,
+    opening,
+    applicant,
+    lastDate
+  ) {
     this.id = id;
     this.Cname = Cname;
     this.Clogo = Clogo;
@@ -9,13 +21,26 @@ export default class JobModel {
     this.workModel = workModel;
     this.salary = salary;
     this.skills = skills;
+    this.opening = opening;
+    this.applicant = applicant;
+    this.lastDate = lastDate;
   }
 
   static getAllJobs() {
     return jobs;
   }
 
-  static addNewJob(Cname, role, location, workModel, salary, skills, Clogo) {
+  static addNewJob(
+    Cname,
+    role,
+    location,
+    workModel,
+    salary,
+    skills,
+    Clogo,
+    lastDate,
+    opening
+  ) {
     let newJob = new JobModel(
       uniqid(),
       Cname,
@@ -24,7 +49,10 @@ export default class JobModel {
       location,
       workModel,
       salary,
-      skills
+      skills,
+      opening,
+      [],
+      lastDate
     );
 
     jobs.push(newJob);
@@ -37,7 +65,9 @@ export default class JobModel {
   static update(jobRecieved) {
     console.log(jobRecieved);
     const index = jobs.findIndex((p) => p.id == jobRecieved.id);
+    const applicant = jobs[index].applicant;
     jobs[index] = jobRecieved;
+    jobs[index].applicant = applicant;
   }
   static delete(id) {
     const index = jobs.findIndex((p) => p.id === id);
@@ -65,7 +95,10 @@ var jobs = [
     "Gurgao India",
     "Remote",
     "8-10",
-    ["HTML", "NodeJs", "React", "CSS", "SQL"]
+    ["HTML", "NodeJs", "React", "CSS", "SQL"],
+    "2",
+    [],
+    "2, May 2024"
   ),
   new JobModel(
     "2",
@@ -75,7 +108,10 @@ var jobs = [
     "Bangalore India",
     "Remote",
     "15-20",
-    ["SDE", "SQL", "React", "JavaScript", "JQuery", "Java"]
+    ["SDE", "SQL", "React", "JavaScript", "JQuery", "Java"],
+    "2",
+    [],
+    "2, May 2024"
   ),
   new JobModel(
     "3",
@@ -85,7 +121,10 @@ var jobs = [
     "Delhi India",
     "WFH",
     "10-15",
-    ["NodeJs", "React", "Angular", "MERN", "SQL"]
+    ["NodeJs", "React", "Angular", "MERN", "SQL"],
+    "2",
+    [],
+    "2, May 2024"
   ),
   new JobModel(
     "4",
@@ -95,6 +134,9 @@ var jobs = [
     "Chennai India",
     "Remote",
     "8-10",
-    ["HTML", "NodeJs", "React", "CSS", "SQL", "JavaScript"]
+    ["HTML", "NodeJs", "React", "CSS", "SQL", "JavaScript"],
+    "2",
+    [],
+    "2, May 2024"
   ),
 ];

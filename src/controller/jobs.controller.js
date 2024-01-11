@@ -14,9 +14,28 @@ export default class JobsController {
   }
   addNewJob(req, res) {
     // console.log(req.body);
-    const { Cname, role, location, workModel, salary, skills } = req.body;
+    const {
+      Cname,
+      role,
+      location,
+      workModel,
+      salary,
+      skills,
+      lastDate,
+      opening,
+    } = req.body;
     const Clogo = "images/Job_Company_Logo/" + req.file.filename;
-    JobModel.addNewJob(Cname, role, location, workModel, salary, skills, Clogo);
+    JobModel.addNewJob(
+      Cname,
+      role,
+      location,
+      workModel,
+      salary,
+      skills,
+      Clogo,
+      lastDate,
+      opening
+    );
     let jobs = JobModel.getAllJobs();
     // console.log(jobs);
     return res.render("jobs", {

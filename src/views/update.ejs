@@ -103,6 +103,30 @@
       </div>
 
       <div class="mb-3">
+        <label for="lastDate" class="form-label">Last Date to Apply</label>
+        <input
+          type="date"
+          class="form-control"
+          id="lastDate"
+          name="lastDate"
+          value="<%= job.lastDate %>"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="opening" class="form-label">Number of Opening</label>
+        <input
+          type="number"
+          class="form-control"
+          id="opening"
+          name="opening"
+          value="<%= job.opening %>"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
         <label for="imageUrl" class="form-label">Image URL</label>
         <input
           type="text"
